@@ -1,6 +1,7 @@
 package com.cydeo.day3;
 
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,14 +33,21 @@ public class SpartanTestsWithParameters {
     @Test
     public void test1(){
 
-        given().
+       Response response = given().
                 accept(ContentType.JSON)
                         .and()
                             .pathParam("id",5)
                 .when()
                 .get("/api/spartans/{id}");
 
+       //verify status code
+        assertEquals(200,response.statusCode());
 
+        //verify content type
+        assertEquals("application/json",response.contentType());
+
+        //verify Blythe is in the json payload
+        assertTrue(response.body().asString().contains("Blythe"));
 
 
     }
