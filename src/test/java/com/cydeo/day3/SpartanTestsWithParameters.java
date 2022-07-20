@@ -102,7 +102,7 @@ public class SpartanTestsWithParameters {
     And "Jannet" should be in response payload/body
      */
 
-    @DisplayName("GET request to /api/spartans/searc with Query Params")
+    @DisplayName("GET request to /api/spartans/search with Query Params")
     @Test
     public void test3(){
 
