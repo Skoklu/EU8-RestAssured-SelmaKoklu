@@ -54,7 +54,7 @@ public class HrGetRequests {
 
         //verify body contains Americas
         response.prettyPrint();
-        assertEquals(response.body().asString().contains("Americas"),true);
+        assertTrue(response.body().asString().contains("Americas"));
     }
 
 
