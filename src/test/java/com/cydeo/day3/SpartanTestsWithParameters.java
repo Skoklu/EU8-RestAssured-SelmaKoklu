@@ -159,7 +159,7 @@ public class SpartanTestsWithParameters {
         assertTrue(response.body().asString().contains("Janette"));
 
 
-        response.prettyPrint();
+
 
 
 
