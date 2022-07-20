@@ -50,6 +50,29 @@ public class ORDSApiTestWithParameters {
 
     }
 
+    /*
+    Send a GET request to employees and get only employees who work as an IT_PROG
+     */
+    @DisplayName("Get request to /employees with query param")
+    @Test
+            public void test2(){
+
+        Response response = given().accept(ContentType.JSON)
+                .and().queryParam("q","{\"job_id\":\"IT_PROG\"}")
+                .when().get("employees");
+
+        assertEquals(200,response.statusCode());
+
+        assertEquals("application/json",response.header("Content-Type"));
+
+        assertTrue(response.body().asString().contains("IT_PROG"));
+
+        response.prettyPrint();
+
+    }
+
+
+
 
 
 }
