@@ -158,8 +158,7 @@ public class SpartanTestsWithParameters {
         //verify "Janette" is in the json payload/body
         assertTrue(response.body().asString().contains("Janette"));
 
-
-
+        response.prettyPrint();
 
 
 
