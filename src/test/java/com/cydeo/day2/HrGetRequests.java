@@ -1,5 +1,6 @@
 package com.cydeo.day2;
 
+import com.cydeo.utilities.HrTestBase;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -11,16 +12,10 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class HrGetRequests {
+public class HrGetRequests extends HrTestBase {
 
 
-    //BeforeAll is an annotation equals to @BeforeClass in testNG, we use it with static method name
-    @BeforeAll
-    public static void init(){
 
-        //Save BaseURI inside this variable so that we don't need to type each http method.
-        baseURI = "http://54.211.143.220:1000/ords/hr";
-    }
 
     @DisplayName("GET request to /regions")
     @Test
