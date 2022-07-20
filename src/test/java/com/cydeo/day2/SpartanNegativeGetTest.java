@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.baseURI;
+
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,10 +27,10 @@ public class SpartanNegativeGetTest {
     When user send GET request to api/spartans/10 end point
     Then status code must be 406
     And response content type must be application/xml;charset=UTF-8
-
+*/
     @DisplayName("Get request to /api/spartans/10")
    @Test
-    public static void test1(){
+    public void test1(){
 
 
         Response response =    given()
@@ -42,8 +43,8 @@ public class SpartanNegativeGetTest {
 
         //verify content type
         assertEquals("application/xml;charset=UTF-8", response.contentType());
-    }
-    */
 
+        response.prettyPrint();
+    }
 
 }
