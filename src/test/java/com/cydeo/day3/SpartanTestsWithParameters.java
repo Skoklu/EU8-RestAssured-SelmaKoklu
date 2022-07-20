@@ -80,7 +80,7 @@ public class SpartanTestsWithParameters {
         //verify content type
         assertEquals("application/json",response.contentType());
 
-        //verify Blythe is in the json payload
+        //verify "Not Found" message is in the json payload/body
         assertTrue(response.body().asString().contains("Not Found"));
 
         response.prettyPrint();
