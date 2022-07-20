@@ -19,13 +19,13 @@ public class HrGetRequests {
     public static void init(){
 
         //Save BaseURI inside this variable so that we don't need to type each http method.
-        RestAssured.baseURI = "http://54.211.143.220:1000/ords/hr";
+        baseURI = "http://54.211.143.220:1000/ords/hr";
     }
 
     @DisplayName("GET request to /regions")
     @Test
     public void test1(){
-        Response response = RestAssured.get("/regions");
+        Response response =get("/regions");
 
         //print the status code
         System.out.println(response.statusCode());
