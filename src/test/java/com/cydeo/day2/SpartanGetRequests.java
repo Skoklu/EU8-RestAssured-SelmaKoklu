@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static io.restassured.RestAssured.*;
+
 public class SpartanGetRequests {
 
 
@@ -22,7 +24,7 @@ public class SpartanGetRequests {
     @Test
     public void test1(){
 
-        Response response = RestAssured.given().accept(ContentType.JSON)
+        Response response = given().accept(ContentType.JSON)
                 .when()
                     .get(baseUrl+"/api/spartans");
 
@@ -57,7 +59,7 @@ public class SpartanGetRequests {
     @DisplayName("Get one spartan /api/spartans/3 and verify")
     @Test
     public void test2(){
-    Response response = RestAssured.given().accept(ContentType.JSON)
+    Response response = given().accept(ContentType.JSON)
              .when()
                     .get(baseUrl+"/api/spartans/3");
 
