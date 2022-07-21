@@ -1,6 +1,7 @@
 package com.cydeo.day4;
 
 import com.cydeo.utilities.HrTestBase;
+import groovy.transform.ASTTest;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
@@ -36,5 +37,18 @@ public class ORDSApiWithJsonPath extends HrTestBase {
         List<String> allCountryIDs = jsonPath.getList("items.country_id");
         System.out.println("allCountryIDs = " + allCountryIDs);
 
+
+        //get all country names where their region id is equal to 2
+
+        List<String> countryNameWithRegionID2 = jsonPath.getList("items.findAll {it.region_id==2}.country_name");
+        System.out.println("countryNameWithRegionID2 = " + countryNameWithRegionID2);
+
     }
+
+    @DisplayName("GET request /employees with query param")
+    @Test
+     public void test2(){
+
+    }
+
 }
