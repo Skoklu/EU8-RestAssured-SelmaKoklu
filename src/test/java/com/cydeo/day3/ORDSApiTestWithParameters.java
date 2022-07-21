@@ -72,6 +72,15 @@ public class ORDSApiTestWithParameters {
     }
 
 
+    //TASK
+    //Print each name of IT_PROG
+
+    @Test
+    public void test3(){
+
+
+
+    }
 
 
 
