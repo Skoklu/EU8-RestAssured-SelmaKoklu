@@ -1,6 +1,6 @@
 package com.cydeo.day4;
 
-import com.cydeo.utilities.HrTestBase;
+import com.cydeo.utilities.HRTestBase;
 import groovy.transform.ASTTest;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -12,7 +12,7 @@ import java.util.List;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ORDSApiWithJsonPath extends HrTestBase {
+public class ORDSApiWithJsonPath extends HRTestBase {
 
 
     @DisplayName("GET request to countries")
