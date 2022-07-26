@@ -1,6 +1,7 @@
 package com.cydeo.day4;
 
-import com.cydeo.utilities.HrTestBase;
+import com.cydeo.utilities.HRTestBase;
+import com.cydeo.utilities.HRTestBase;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +13,7 @@ import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class ORDSApiTestWithPath extends HrTestBase {
+public class ORDSApiTestWithPath extends HRTestBase {
 
     @DisplayName("GET request to countries with path method")
     @Test
