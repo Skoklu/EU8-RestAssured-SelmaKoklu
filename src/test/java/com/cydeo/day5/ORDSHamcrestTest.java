@@ -57,12 +57,14 @@ public class ORDSHamcrestTest extends HRTestBase {
                 .statusCode(200)
                 .body("items.job_id", everyItem(equalTo("IT_PROG")))
                 .extract().jsonPath();
-        //extract() --> method that allow us to get response object after we use then() method.
-        //assert that we have only 5 firstnames
+
+        //extract() -->method that allows us to get response object after we use then() method.
+        //assert that we have only 5 firstNames
         assertThat(jsonPath.getList("items.first_name"),hasSize(5));
 
-        //assert firstnames order
-        assertThat(jsonPath.getList("items.first_name"),containsInRelativeOrder("Alexander","Bruce","David","Valli","Diana"));
+        //assert firstNames order
+        assertThat(jsonPath.get("items.first_name"),containsInRelativeOrder("Alexander","Bruce","David","Valli","Diana"));
+
 
     }
 
