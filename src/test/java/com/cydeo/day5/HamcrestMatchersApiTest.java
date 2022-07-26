@@ -28,7 +28,7 @@ public class HamcrestMatchersApiTest {
     @Test
     public void test1(){
 
-        given()
+        given().log().all()
                 .accept(ContentType.JSON)
                 .and().pathParam("id",15)
                 .get("http://54.211.143.220:8000/api/spartans/{id}")
@@ -40,7 +40,11 @@ public class HamcrestMatchersApiTest {
                 .body("id",equalTo(15),
                         "name",is("Meta"),
                         "gender",is("Female"),
-                        "phone",is(1938695106));
+                        "phone",is(1938695106))
+                .log().all();
+
+
+
 
 
 
