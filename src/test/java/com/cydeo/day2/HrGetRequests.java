@@ -1,6 +1,7 @@
 package com.cydeo.day2;
 
-import com.cydeo.utilities.HrTestBase;
+import com.cydeo.utilities.HRTestBase;
+import com.cydeo.utilities.HRTestBase;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class HrGetRequests extends HrTestBase {
+public class HrGetRequests extends HRTestBase {
 
 
 
