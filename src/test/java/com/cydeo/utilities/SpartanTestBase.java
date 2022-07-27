@@ -1,5 +1,6 @@
 package com.cydeo.utilities;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 import static io.restassured.RestAssured.baseURI;
@@ -16,5 +17,16 @@ public abstract class SpartanTestBase {
         baseURI = "http://54.211.143.220:8000";
 
         //get ip address from configurations
+        String dbUrl = "jdbc:oracle:thin:@54.211.143.220:1521:xe";
+        String dbUsername = "SP";
+        String dbPassword = "SP";
+
+        DBUtils.createConnection(dbUrl,dbUsername,dbPassword);
+
+
+    }
+    @AfterAll
+    public void tearDown(){
+        DBUtils.destroy();
     }
 }
