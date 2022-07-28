@@ -39,4 +39,13 @@ public class ORDSPojoGetRequestTest extends HRTestBase {
         System.out.println("employee1 = " + employee1);
 
     }
+
+    /*
+    - Send a get request to regions
+    - Verify that region ids are  1,2,3,4
+    - Verify that regions names Europe, Americas, Asia, Middle east and Africa
+    - Verify that count is 4
+    - Try to use POJO as much as possible
+    - Ignore nonUsed fields
+     */
 }
