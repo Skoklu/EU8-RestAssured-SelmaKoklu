@@ -1,5 +1,6 @@
 package com.cydeo.day7;
 
+import com.cydeo.pojo.Spartan;
 import com.cydeo.utilities.SpartanTestBase;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -89,5 +90,82 @@ public class SpartanPostRequestDemo extends SpartanTestBase {
 
 
         response.prettyPrint();
+    }
+
+
+    @DisplayName("POST with MAP to Spartan class")
+    @Test
+    public void postMethod3(){
+
+        //Create one object from your POJO, send it as a JSON
+        Spartan spartan = new Spartan();
+        spartan.setName("SeverusSpartan");
+        spartan.setGender("Male");
+        spartan.setPhone(8877445596L);
+
+        System.out.println("spartan = " + spartan);
+
+        Response response = given().accept(ContentType.JSON).and() //what we are asking from api which is JSON response
+                .contentType(ContentType.JSON) //what we are sending to api, which is JSON also
+                .body(spartan).log().all()
+                .when()
+                .post("/api/spartans");
+
+        //verify status code
+        assertThat(response.statusCode(),is(201));
+        assertThat(response.contentType(),is("application/json"));
+
+        String expectedResponseMessage = "A Spartan is Born!";
+        assertThat(response.path("success"),is(expectedResponseMessage));
+        assertThat(response.path("data.name"),is("SeverusSpartan"));
+        assertThat(response.path("data.gender"),is("Male"));
+        assertThat(response.path("data.phone"),is(8877445596L));
+
+
+        response.prettyPrint();
+    }
+
+
+    @DisplayName("POST with MAP to Spartan class")
+    @Test
+    public void postMethod4(){
+
+        //This example we implement serialization with creatin spartan object sending as a request body
+        //also implemented deserilization getting the id, sending get request and saving that body as a response
+
+        //Create one object from your POJO, send it as a JSON
+        Spartan spartan = new Spartan();
+        spartan.setName("SeverusSpartan");
+        spartan.setGender("Male");
+        spartan.setPhone(8877445596L);
+
+        System.out.println("spartan = " + spartan);
+        String expectedResponseMessage = "A Spartan is Born!";
+
+        int idFromPost = given().accept(ContentType.JSON).and() //what we are asking from api which is JSON response
+                .contentType(ContentType.JSON) //what we are sending to api, which is JSON also
+                .body(spartan).log().all()
+                .when()
+                .post("/api/spartans")
+        .then()
+                .statusCode(201)
+                        .contentType("application/json")
+                                .body("success",is(expectedResponseMessage))
+
+                                        .extract().jsonPath().getInt("data.id");
+
+        System.out.println("idFromPost = " + idFromPost);
+        //send a request to id
+        Spartan spartanPosted = given().accept(ContentType.JSON)
+                .and().pathParam("id",idFromPost)
+                .when().get("/api/spartans/{id}")
+                .then().statusCode(200).log().all().extract().as(Spartan.class);
+
+        assertThat(spartanPosted.getName(),is(spartan.getName()));
+        assertThat(spartanPosted.getGender(),is(spartan.getGender()));
+        assertThat(spartanPosted.getPhone(),is(spartan.getPhone()));
+        assertThat(spartanPosted.getId(),is(idFromPost));
+
+
     }
 }
