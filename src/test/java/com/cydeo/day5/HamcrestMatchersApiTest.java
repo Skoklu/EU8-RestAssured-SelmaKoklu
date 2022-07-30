@@ -91,5 +91,11 @@ public class HamcrestMatchersApiTest {
 
     }
 
+    //Create a spartanUtil class
+    //Create a static method that returns Map<String, Object>
+    //use faker library (add as the dependency)to assign each time different information
+    //for name, gender, phone number
+    //then use your method for creating spartan as a map, dynamically
+
 
 }
